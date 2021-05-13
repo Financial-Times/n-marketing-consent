@@ -6,10 +6,7 @@
   "browser": "dist/client/main.js",
   "scripts": {
     "test": "make test",
-    "precommit": "make build && node_modules/.bin/secret-squirrel",
-    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
     "commit": "commit-wizard",
-    "prepush": "make test verify-with-tslint -j3",
     "prepare": "(npx snyk protect || npx snyk protect -d || true) && make build"
   },
   "repository": {
@@ -23,35 +20,42 @@
   },
   "homepage": "https://github.com/Financial-Times/n-profile-ui#readme",
   "devDependencies": {
-    "@financial-times/n-gage": "^3.7.1",
-    "@financial-times/n-internal-tool": "^2.2.4",
+    "@financial-times/n-gage": "8.3.0",
+    "@financial-times/n-internal-tool": "8.0.0",
     "@types/classnames": "^2.2.9",
     "@types/express": "^4.11.1",
-    "@types/jest": "^22.2.3",
+    "@types/jest": "26.0.23",
     "@types/node": "^9.6.6",
     "@types/react": "^16.9.17",
-    "@types/sinon": "^4.3.1",
-    "chalk": "^2.4.1",
+    "@types/sinon": "10.0.0",
+    "chalk": "4.1.1",
     "eslint-plugin-react": "^7.18.0",
-    "jest": "^22.4.3",
-    "pa11y-ci": "^2.1.1",
-    "react-dom": "^16.12.0",
-    "rollup": "^1.29.1",
+    "jest": "26.6.3",
+    "pa11y-ci": "2.4.1",
+    "react-dom": "17.0.2",
+    "rollup": "2.47.0",
     "rollup-plugin-typescript": "^1.0.1",
-    "sinon": "^5.0.7",
-    "snyk": "^1.168.0",
-    "ts-jest": "^22.4.5",
-    "tslib": "^1.10.0",
-    "tslint": "^5.10.0",
-    "typescript": "^3.7.5"
+    "sinon": "10.0.0",
+    "snyk": "1.594.0",
+    "ts-jest": "26.5.6",
+    "tslib": "2.2.0",
+    "tslint": "6.1.3",
+    "typescript": "4.2.4"
   },
   "engines": {
-    "node": "^8.9.4"
+    "node": "12"
   },
   "dependencies": {
-    "@financial-times/n-user-api-client": "^2.7.0",
+    "@financial-times/n-user-api-client": "4.0.2",
     "classnames": "^2.2.6",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "3.0.0",
     "react": "^16.12.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "node_modules/.bin/secret-squirrel-commitmsg",
+      "pre-commit": "make build && node_modules/.bin/secret-squirrel",
+      "pre-push": "make test verify-with-tslint -j3"
+    }
   }
 }

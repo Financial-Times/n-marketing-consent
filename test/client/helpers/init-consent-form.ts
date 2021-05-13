@@ -7,28 +7,29 @@ const formOfWords = require('../../fixtures/form-of-words.json');
 
 export default function (callback) {
 	document.body.innerHTML = loadHTML({
-		formOfWords: { ...formOfWords, source: 'test' }
+		formOfWords: { ...formOfWords, source: 'test' },
 	});
 
 	const consentForm = new LiveUpdateConsent({
-		selector: '.js-consent-preference'
+		selector: '.js-consent-preference',
 	});
+
 	consentForm.element.addEventListener('consent-form:saved', () => {
 		callback();
 	});
+
 	consentForm.onChange((consent) => {
-		const url = consentForm.element.getAttribute('action');
+		const url = consentForm.element.getAttribute('action') || '';
 		return fetch(url, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				data: consent
-			})
-		})
-		.then(response => {
+				data: consent,
+			}),
+		}).then((response) => {
 			if (response.status < 400) {
 				return 'success';
 			}
@@ -38,4 +39,4 @@ export default function (callback) {
 			return 'fail';
 		});
 	});
-};
+}

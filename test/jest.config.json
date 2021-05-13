@@ -7,7 +7,7 @@
   "moduleFileExtensions": ["ts", "tsx", "js", "json", "node"],
   "globals": {
     "ts-jest": {
-      "tsConfigFile": "../tsconfig.json"
+      "tsconfig": "./tsconfig.json"
     }
   },
   "testURL": "http://localhost"
