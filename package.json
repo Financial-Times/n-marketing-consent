@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Financial-Times/n-profile-ui#readme",
   "devDependencies": {
-    "@financial-times/n-gage": "^3.7.1",
+    "@financial-times/n-gage": "^7.0.0",
     "@financial-times/n-internal-tool": "^2.2.4",
     "@types/classnames": "^2.2.9",
     "@types/express": "^4.11.1",
